@@ -1,13 +1,20 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
+// random integer from min to max
 
-function randomInt(min, max) {
-  return Math.floor(Math.random()*(max - min) +min);
+  function randomInt(min, max) {
+  if (!max) {
+    max = min
+    min = 0
+  } // random value
+  var rand = Math.random() 
+  return Math.floor(min*(1 - rand) + rand*max);
   } 
 
 
+
 function randomItem(lists) {
-  return lists[randomInt(0, lists.length - 1)];
+  return lists[randomInt(lists.length)];
   }
 
 
@@ -17,9 +24,9 @@ function generatePassword() {
   var input = prompt("How long do you want your password to be?");
   var passwordLength = parseInt(input);
 
-  // letting the user know that it must be between 8 and 128 characters
+  // letting the user know to use a number as the first input
     if (isNaN(passwordLength)) {
-    alert("Password must be atleast 8 through 128")
+    alert("Password must be a number.")
   
 
     return
@@ -28,17 +35,17 @@ function generatePassword() {
 
   // adding an if statment to make sure its between 8 and 128 and if it is not to alert them that it must be between those numbers.
   // set this up in class
-  if (passwordLength > 8 && passwordLength < 128) {
+  if (passwordLength < 8 || passwordLength > 128) {
     alert("Password must be between 8 and 128 characters")
 
     return
   }
 
   // setting up confrim to get input from our users.
-  var num = confrim("Would you like numbers in your password?");
-  var specialCharacters = confrim('Woul you like any special characters in your password?');
-  var lowercase = confrim("Would you like any lowercase letters in your password?");
-  var uppercase = confrim("Would you like any uppercase letts in your password?");
+  var num = confirm("Would you like numbers in your password?");
+  var specialCharacters = confirm("Would you like any special characters in your password?");
+  var lowercase = confirm("Would you like any lowercase letters in your password?");
+  var uppercase = confirm("Would you like any uppercase letts in your password?");
 
   // making list/catogeory with arrays for my numbers, special character and upper and lowercase letters.
   var numbList = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
@@ -67,15 +74,28 @@ function generatePassword() {
     lists.push(uppercaseList);
   }
 
+  if (specialCharacters === false && lowercase === false && uppercase === false) {
+    return "test"
+  }
+// if the user decided to not input anything besides the length of the password we have pushed the uppercase list into it to add a filler for the amount of charcters the user wanted.
+  if (lists === 0) {
+    lists.push(uppercaseList);
+  }
+
+
+
   //empty string to store the password
   var generatedPassword = ""
 
-
+//where is randon list being used 
   for (var i = 0; i < passwordLength; i++) {
-    var randomList = randomItem(lists)
-    var randomChar = randomItem(lists)
-  }
+    var randomlist = randomItem(lists);
+    var randomChar = randomItem(randomlist);
+    generatedPassword += randomChar;
 
+    
+  }
+  return generatedPassword
 }
 
 
