@@ -1,6 +1,16 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
+function randomInt(min, max) {
+  return Math.floor(Math.random()*(max - min) +min);
+  } 
+
+
+function randomItem(lists) {
+  return lists[randomInt(0, lists.length - 1)];
+  }
+
+
 function generatePassword() {
 
   //making a prompt to ask the user how long they want their password to be
@@ -36,7 +46,37 @@ function generatePassword() {
   var lowercaseList = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
   var uppercaseList = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
 
+  //creating a lists array for all my list items.
+  var lists = []
 
+
+  // pushing my list to the arrays when the user responds yes
+  if (num === true) {
+    lists.push(numbList);
+  }  
+
+  if (specialCharacters === true) {
+    lists.push(speicalCharactersList);
+  }
+
+  if (lowercase === true) {
+    lists.push(lowercaseList);
+  }
+
+  if (uppercase === true) {
+    lists.push(uppercaseList);
+  }
+
+  //empty string to store the password
+  var generatedPassword = ""
+
+
+  for (var i = 0; i < passwordLength; i++) {
+    var randomList = randomItem(lists)
+    var randomChar = randomItem(lists)
+  }
+
+}
 
 
 // Write password to the #password input
