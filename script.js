@@ -74,11 +74,9 @@ function generatePassword() {
     lists.push(uppercaseList);
   }
 
-  if (specialCharacters === false && lowercase === false && uppercase === false) {
-    return "test"
-  }
-// if the user decided to not input anything besides the length of the password we have pushed the uppercase list into it to add a filler for the amount of charcters the user wanted.
-  if (lists === 0) {
+  
+// if the user decided to not input anything besides the length of the password we have pushed the uppercase list into it and used our .length to 
+  if (!lists.length === 0) {
     lists.push(uppercaseList);
   }
 
