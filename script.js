@@ -57,7 +57,7 @@ function generatePassword() {
   var lists = []
 
 
-  // pushing my list to the arrays when the user responds yes
+  // if stating if the user picks okay then to push our list thru the generator 
   if (num === true) {
     lists.push(numbList);
   }  
