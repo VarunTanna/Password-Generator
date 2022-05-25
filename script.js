@@ -76,7 +76,7 @@ function generatePassword() {
 
   
 // if the user decided to not input anything besides the length of the password we have pushed the uppercase list into it and used our .length to 
-  if (!lists.length === 0) {
+  if (lists.length === 0) {
     lists.push(uppercaseList);
   }
 
